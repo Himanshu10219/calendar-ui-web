@@ -1,0 +1,62 @@
+<section>
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-6 my-5">
+        <div class="d-flex align-items-center">
+          <input class="form-control me-2" type="text" placeholder="Search..." aria-label="Search" name="searchText"
+            [(ngModel)]="searchText">
+          <span class="mx-2 searchBtn"><i class="fa fa-search"></i></span>
+        </div>
+        <div class="col-6 my-2">
+          <button class="btn btn-success" (click)="addModal('')">Add Category</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Creation Date</th>
+              <th scope="col" colspan="2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of categoryList | filter:searchText">
+              <td>{{category.name}}</td>
+              <td>{{category.createdAt}}</td>
+              <td><i class="material-icons" (click)="editCategory(category.id,category.name)">edit</i></td>
+              <td><i class="material-icons" (click)="deleteCategory(category.id,category.name)">delete</i></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="closeAddModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-input">
+          <label for="">Category Name</label>
+          <input type="text" class="form-control" name="categoryName" [(ngModel)]="categoryName"
+            value={{editCategoryName}}>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeAddModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addCategory()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

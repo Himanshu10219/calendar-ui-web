@@ -1,0 +1,54 @@
+<section class="container-fluid">
+  <div class="row">
+    <div class="col-10">
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
+    <div class="col-2 bg-light">
+      <a href="event-add" class="btn btn-primary my-4"><i class="fa fa-plus mx-2"></i>New Meeting</a>
+      <div class="eventlist mt-3 pt-2">
+        <h4 class="text-center">My Events</h4>
+        <hr class="border-bottom border-primary" />
+        <p class="text-primary mx-3">Categories</p>
+        <ng-container *ngIf="eventCategoryList.length > 0; else elseTemplate">
+          <div class="categoryList">
+            <ul *ngFor="let eventCat of eventCategoryList">
+              <li>
+                <div class="form-check">
+                  <input class="form-check-input categoryTypes" type="checkbox" name="categoryTypes"
+                    [(ngModel)]="eventCat.checked" (change)="onCheckBoxValueChange($event, eventCat['name'])"
+                    value="{{eventCat['name']}}">
+                  <label class="form-check-label">
+                    {{eventCat['name']}}
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <li class=" my-2 text-center">No Category</li>
+        </ng-template>
+      </div>
+      <div class="todayEvents">
+        <h5 class="text-center">Today's Events</h5>
+        <hr class="border-bottom border-primary" />
+        <ng-container *ngIf="todayEventsList.length > 0; else elseEventTemplate">
+          <div class="todayList">
+            <ul *ngFor="let event of todayEventsList">
+              <li>
+                <div class="list d-flex justify-content-between">
+                  <h6>{{event.title}}</h6>
+                  <a (click)='showModal(event)'><i class="fa fa-ellipsis-v"></i></a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+        <ng-template #elseEventTemplate>
+          <li class=" my-2 text-center">No Today's Event</li>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</section>

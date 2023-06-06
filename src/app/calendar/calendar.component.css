@@ -1,0 +1,15 @@
+.categoryList {
+    overflow-y: scroll;
+}
+
+.todayList {
+    max-height: 600px;
+}
+
+.categoryList .dot {
+    height: 15px;
+    width: 15px;
+    background-color: #ef0a71;
+    border-radius: 50%;
+    display: inline-block;
+}

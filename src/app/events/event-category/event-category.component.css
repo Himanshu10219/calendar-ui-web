@@ -1,0 +1,24 @@
+.form-control {
+  padding: 1rem;
+}
+
+.searchBtn {
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  right: 0%;
+}
+
+.searchBtn:hover {
+  cursor: pointer;
+  color: var(--appbg);
+  transition: all 0.3s linear;
+}
+
+.material-icons {
+  cursor: pointer;
+  color: var(--appbg);
+}
+

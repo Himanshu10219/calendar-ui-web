@@ -1,0 +1,65 @@
+.modal-content {
+  transition: all 0.3s linear;
+  background: var(--modal-background);
+
+}
+
+.material-icons {
+  color: white;
+  font-weight: bold;
+}
+
+
+label {
+  color: white;
+  font-weight: bold;
+}
+
+.custom-modal .modal-content {
+  overflow-y: auto;
+  font-weight: bold;
+}
+
+.custom-modal .modal-body input[type="text"],
+.custom-modal .modal-body textarea {
+  font-weight: bold;
+}
+
+.display-4 {
+  font-size: 4rem;
+  /* Increase the font size to your desired value */
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(1.8);
+}
+
+.custom-checkbox-lg .custom-control-input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.custom-checkbox-lg .custom-control-label::before {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modal-title {
+  color: black;
+}
+
+.r3 {
+  color: #c1c1c1;
+  font-weight: 500;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+

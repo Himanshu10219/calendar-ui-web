@@ -1,0 +1,37 @@
+nav {
+    height: 70px !important;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.loginLink {
+    text-decoration: none;
+    color: var(--primry-color);
+    font-weight: 500;
+    transition: all 0.3s linear;
+}
+
+.loginLink:hover {
+    color: var(--button-background);
+}
+
+.loginLink .fa {
+    margin-left: 1rem;
+    font-size: 1.5rem;
+}
+
+.navbar-default {
+    /* background-color: #fff; */
+    padding: 20px 0;
+    box-shadow: 1px 2px 15px rgba(100, 100, 100, 0.3);
+    ;
+}
+
+@media(max-width:992px) {
+    nav {
+        height: auto !important;
+    }
+}

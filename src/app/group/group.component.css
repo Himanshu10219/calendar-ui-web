@@ -1,0 +1,33 @@
+
+.modal-content{
+      background-color: rgb(49, 77, 95);
+     transition: all 0.3s linear;
+
+ }
+ .modal-content:hover{
+
+     /* transform:  translateY(0.3); */
+     box-shadow: 10px 10px 10px black;
+ }
+ .material-icons{
+   color:white;
+
+ }
+
+ label{
+   color:white;
+ }
+
+
+.btn:hover {
+ transform:  translateY(1.8);
+}
+
+.modal-title{
+    color: white;
+}
+
+
+.btn {
+  color : darkblue
+}

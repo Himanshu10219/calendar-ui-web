@@ -1,0 +1,218 @@
+<section>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <main class="l-card" (click)="handleCardClick('myGroups')">
+        <section class="l-card__text">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <div class="l-card__userImage">
+                <img src="https://cdn-icons-png.flaticon.com/512/166/166258.png" alt="Naruto">
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-title" style="position: relative;">
+                <span class="card-count rounded text-white d-inline-flex align-items-center justify-content-center">{{mygroupWithUsersList.length}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="l-card__userInfo d-flex align-items-left">
+            <span class="card-count1 mr-2">My Groups</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <main class="l-card" (click)="handleCardClick('joinGroups')">
+        <section class="l-card__text">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <div class="l-card__userImage">
+                <img src="https://cdn-icons-png.flaticon.com/512/166/166258.png" alt="Naruto">
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-title" style="position: relative;">
+                <span class="card-count rounded text-white d-inline-flex align-items-center justify-content-center">{{joinedgroupWithUsersList.length}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="l-card__userInfo d-flex align-items-left">
+            <span class="card-count1 mr-2">Joined Groups</span>
+          </div>
+        </section>
+      </main>
+
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <main class="l-card" (click)="handleCardClick('allGroups')">
+        <section class="l-card__text">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <div class="l-card__userImage">
+                <img src="https://cdn-icons-png.flaticon.com/512/166/166258.png" alt="Naruto">
+              </div>
+            </div>
+            <div class="col">
+              <p class="card-title" style="position: relative;">
+                <span class="card-count rounded text-white d-inline-flex align-items-center justify-content-center">{{allgroupWithUsersList.length}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="l-card__userInfo d-flex align-items-left">
+            <span class="card-count1 mr-2">All Groups</span>
+          </div>
+        </section>
+      </main>
+
+
+    </div>
+  </div>
+
+  </div>
+  <div class="d-flex justify-content-center mt-5">
+    <button class="btn btn-lg text-white" style="background-color: var(--modal-background);" (click)="openModal()">MAKE GROUP</button>
+  </div>
+  <ng-container *ngIf="groupWithUsersList.length>0; else elseTemplate">
+    <div class="d-flex justify-content-center mt-5">
+      <table class="table custom-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Group Name</th>
+            <th scope="col">Total Members</th>
+            <th scope="col" *ngIf="selectedCard === 'myGroups'">Edit</th>
+            <th scope="col">Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let group of groupWithUsersList; let i = index">
+            <tr>
+              <td class="align-right" style="width: 70px;">
+                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center circle">
+                  <span class="circle-text">{{group.userGroup.name[0]}}</span>
+                </div>
+              </td>
+              <td class="align-middle" style="font-weight: bold;">{{ group.userGroup.name }}</td>
+              <td class="align-middle text-white" style="font-weight: bold;">{{ group.userGroupMappingList.length }}</td>
+              <td class="align-middle" *ngIf="selectedCard === 'myGroups'">
+                <!-- Remove the "Edit" button when "All Groups" is selected -->
+                <button class="btn btn-danger"><i class="material-icons">edit</i></button>
+              </td>
+              <td class="align-middle">
+                <span class="text-with-arrow" (click)="toggleUserList(i)">
+                  View Members
+                  <span class="arrow-down"></span>
+                </span>
+              </td>
+            </tr>
+            <tr *ngIf="selectedGroup==i&& group.userGroupMappingList.length>0">
+              <td colspan="6">
+                <div class="row user-list">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="card-body">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th></th>
+                              <th>Username</th>
+                              <th>Email</th>
+                              <th>Role</th>
+                              <th *ngIf="selectedCard === 'myGroups'">Remove</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let groupUser of group.userGroupMappingList; let j = index" style="font-weight: bold;">
+                              <td><img [src]="groupUser.userID.profileURL" width="50"></td>
+                              <td class="align-middle text-primary" >{{ groupUser.userID.firstName+" "+groupUser.userID.lastName }}</td>
+                              <td class="align-middle text-primary">{{ groupUser.userID.email }}</td>
+                              <td class="align-middle text-primary">{{ getRole(groupUser.userID.id) }}</td>
+                              <td class="align-middle" *ngIf="selectedCard === 'myGroups'">
+                                <i class="material-icons"
+                                  (click)='deleteUserFromGroup(groupUser.id,groupUser.userID.firstName+" "+groupUser.userID.lastName)'>delete</i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+ <ng-template #elseTemplate>
+  <div class="d-flex justify-content-center">
+    <div class="card text-white mt-5" style="min-width: 1000px;">
+      <div class="card-header text-center" style="font-weight: bold; font-size: large;">
+        No Groups
+      </div>
+      <div class="card-body text-center">
+        <h5 class="card-title mt-3" style="color: var(--modal-background);">You haven't joined any groups yet</h5>
+      </div>
+    </div>
+  </div>
+  
+  </ng-template>
+
+</section>
+
+
+<!-- Bootstrap Modal for Group adding -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">  
+        <h5 class="modal-title text-white" id="myModalLabel">Add Group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true" class="text-danger" style="font-size: 2.4rem;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="groupName">Group Name</label>
+              <input type="text" class="form-control" placeholder="Enter group name" name="groupName"
+                [(ngModel)]="groupName" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="members ">Add Members</label>
+              <ng-multiselect-dropdown [placeholder]="'Add Members'" [settings]="dropdownSettings" [data]="dropdownList"
+                [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" (onDeSelect)="onUnselect($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="description">Description</label>
+              <textarea class="form-control" rows="3" placeholder="Enter description" name="groupDescription"
+                [(ngModel)]="groupDescription"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class=" modal-footer">
+        <button class="btn rounded-pill px-4 btn-success" data-dismiss="modal" (click)="addGroup()">Create</button>
+        <button class="btn rounded-pill px-4 btn-danger" data-dismiss="modal" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

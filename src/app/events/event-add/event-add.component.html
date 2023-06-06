@@ -1,0 +1,164 @@
+<div id="pushNotificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg custom modal right" role="document">
+    <div class="modal-content  py-3 px-4">
+      <i class="fa fa-bell d-block mx-auto mb-3 font-weight-bold display-4 text-white"></i>
+      <p class="text-center description-p text-white">Add Your Latest Event here and notify others for your event</p>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="form-group row">
+            <label for="titleInput" class="col-sm-1 col-form-label"><i class="material-icons">edit</i></label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="titleInput" [(ngModel)]="title" placeholder="Event Title">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-group row">
+              <label for="description" class="col-sm-1 col-form-label"><i class="material-icons">note_add</i></label>
+              <div class="col-sm-10">
+                <textarea class="form-control" id="description" [(ngModel)]="description"
+                  placeholder="description"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="groups" class="col-sm-1 col-form-label"><i class="material-icons">groups</i></label>
+            <div class="col-sm-10">
+              <div class="d-flex align-items-center mb-2">
+                <div class="input-group">
+                  <select class="form-control" id="eventAvailable" (change)="groupValueChange($event)">
+                    <option [value]="null">-- Select Channel --</option>
+                    <option *ngFor="let group of userGroup" [value]="group['id']">
+                      {{group['name']}}
+                    </option>
+                  </select>
+                  <div class="input-group-append">
+                    <button class="btn btn-success ml-2 text-uppercase" (click)="openModal()">
+                      Add Group</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Category Section -->
+          <div class="form-group row">
+            <label for="eventcat" class="col-sm-1 col-form-label"><i class="material-icons">category</i></label>
+            <div class="col-sm-10">
+              <select class="form-control" id="eventAvailable" (change)="categoryValueChange($event)">
+                <option [value]=" null">-- Select Your category --</option>
+                <option *ngFor="let event of eventCategoryList" [value]="event['id']">
+                  {{event['name']}}
+                </option>
+                <option value="other">other</option>
+              </select>
+            </div>
+            <div class="col-sm-7 col-md-6 d-flex align-items-center">
+              <div id="textboxContainer" *ngIf="showTextBox" class="d-inline-flex">
+                <label for="endTimeInput" class="col-sm-4 col-md-3 col-form-label"><i
+                    class="material-icons">east</i></label>
+                <input type="text" class="form-control" id="additionalTextBox" [(ngModel)]="otherCat"
+                  placeholder="Add Your Category Here" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="linkInput" class="col-sm-1 col-form-label"><i class="material-icons">link</i></label>
+            <div class="col-sm-10">
+              <input type="tel" class="form-control" id="linkInput" [(ngModel)]="link" placeholder="Url">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="startTimeInput" class="col-sm-1 col-form-label"><i class="material-icons">schedule</i></label>
+            <div class="col-sm-5">
+              <input type="datetime-local" class="form-control" id="startTimeInput"
+                (change)="startDatevalueChange($event)" placeholder="Start time of the event">
+            </div>
+            <label for="endTimeInput" class="col-sm-1 col-form-label"><i class="material-icons">east</i></label>
+            <div class="col-sm-4">
+              <input type="datetime-local" class="form-control" (change)="endDatevalueChange($event)" id="endTimeInput"
+                placeholder="End time of the event">
+            </div>
+          </div>
+          <div class="form-check form-switch  mb-3">
+            <input class="form-check-input switch" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+              id="showFieldsSwitch" (click)="toggleFields()" />
+            <label class="form-check-label mx-4 text-uppercase">Offline Event(Optional)</label>
+          </div>
+
+          <div class="form-group" id="additionalFields" style="display:none;">
+            <div class="form-group row">
+              <label for="emailInput" class="col-sm-1 col-form-label"><i class="material-icons">pin_drop</i></label>
+              <div class="col-sm-10">
+                <textarea class="form-control p-4" id="field1" [(ngModel)]="venue" placeholder="Venue Name"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="eventAvailable" class="col-sm-1 col-form-label"><i
+                class="material-icons">event_available</i></label>
+            <div class="col-sm-10">
+              <select class="form-control" id="eventAvailable">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-success rounded-pill px-4" data-dismiss="modal" (click)="AddEvent()">Create</button>
+        <button class="btn btn-danger rounded-pill px-4" data-dismiss="modal" (click)="ToLastPage()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bootstrap Modal for Group adding -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-white" id="myModalLabel">Add Group</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true" class="text-danger" style="font-size: 2.4rem;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="groupName">Group Name</label>
+              <input type="text" class="form-control" placeholder="Enter group name" name="groupName"
+                [(ngModel)]="groupName" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="members ">Add Members</label>
+              <ng-multiselect-dropdown [placeholder]="'Add Members'" [settings]="dropdownSettings" [data]="dropdownList"
+                [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="description">Description</label>
+              <textarea class="form-control" rows="3" placeholder="Enter description" name="groupDescription"
+                [(ngModel)]="groupDescription"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class=" modal-footer">
+        <button class="btn rounded-pill px-4 btn-success" data-dismiss="modal" (click)="addGroup()">Create</button>
+        <button class="btn rounded-pill px-4 btn-danger" data-dismiss="modal" (click)="closeModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&family=Plus+Jakarta+Sans&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container-fluid .row .col-2,
+.col-8 {
+  min-height: 100vh;
+}
+
+body {
+  --main-color: #283526;
+  --primry-color: #888888;
+  --button-background: #3787e8;
+  --primary-button-background: #fe7649;
+  --background-color: #07192d;
+  --heading-color: #006BFF;
+  --border-color: #2eca6a;
+  --form-color: #ECF9FF;
+  --addEvent-color: #0C134F;
+  --card-hover: #025464;
+  --appbg: #043a4d;
+  --modal-background:#043a4d;
+
+}
+
+h1,
+h2 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--main-color);
+}
+
+h4,
+h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--main-color);
+}
+
+h3 {
+  font-weight: 750;
+  font-size: 2.2rem;
+  line-height: 6rem;
+  text-transform: capitalize;
+}
+
+p,
+a,
+li,
+button {
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(----appbg);
+}
+
+button {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 150%;
+  font-style: normal;
+  font-weight: normal;
+
+}
+
+span {
+  font-weight: bold;
+  color: var(--heading-color);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.body-background {
+  background-color: #F6F6F6;
+}
+
+.navbar-background {
+  background-color: var(--appbg);
+}
+
+.description-p {
+  color: var(--appbg);
+}
+
+.switch {
+  font-size: 1.2rem;
+}
+
+input,
+textarea,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* --------------hr style---------------- */
+.horizontal {
+  width: 50%;
+  margin: 1rem auto;
+
+}
+
+.btn-primary {
+  color: white !important;
+  background-color: var(--appbg) !important;
+}
+
+/* ---------Fulll-calendar---- */
+.fc .fc-toolbar .fc-toolbar-chunk .fc-today-button {
+  display: none;
+}
+
+.fc-button-group {
+  margin: 0 1rem;
+}
+
+.fc-toolbar-title {
+  margin: 1rem !important;
+}
+
+.fc-button-group {
+  border: none !important;
+
+}
+
+.fc-button-primary {
+  background-color: var(--appbg) !important;
+  margin-left: 1px !important;
+  border-color: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fc-button-primary span {
+  color: white !important;
+}
+
+.fc-button-active {
+  background-color: var(--card-hover) !important;
+}
+
+.fc table {
+  font-size: 18px;
+}
+
+.selectBox:focus {
+  outline: none;
+}
+
+/* All day at day display none */
+.fc .fc-timegrid-axis-frame {
+  display: none;
+}
+
+/* -----------Dropdown Custom css---------- */
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+  background-color: var(--appbg) !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item-container .selected-item span {
+  color: white;
+}
+
+.multiselect-dropdown .dropdown-btn span {
+  color: gray;
+}
+
+@media(max-width:767px) {
+  .fc table {
+    font-size: 12px;
+  }
+
+  .fc .fc-toolbar .fc-toolbar-chunk .fc-today-button {
+    display: none;
+  }
+
+  .selectBox {
+    padding: 1rem 1rem !important;
+  }
+
+  .addEvent {
+    padding: 5px !important;
+    font-size: 12px;
+  }
+
+  .loginCard {
+    width: 18rem !important;
+  }
+}

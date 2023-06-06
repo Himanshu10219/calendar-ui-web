@@ -1,0 +1,22 @@
+.container {
+    background-color: var(--modal-background);
+    width: 70%;
+  }
+
+label{
+  color: white;
+  font-weight: bold;
+}
+
+input:focus{
+    outline: none;
+}
+
+.btn {
+  color: white;
+  font-weight: bold;
+}
+
+.h4{
+  font-weight: bold;
+}

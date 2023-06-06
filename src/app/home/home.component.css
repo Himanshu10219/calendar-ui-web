@@ -1,0 +1,38 @@
+.heading{
+    font-weight: bold;
+}
+.headingText{
+    color:var(--heading-color);
+    font-weight: bold;
+}
+
+.journey{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.journey-component{
+    text-align: center;
+    /* background-color: bisque; */
+    transition: all 0.3s linear;
+
+}
+.journey-component h4{
+    margin-top: 1rem;
+}
+.journey-component p{
+    text-align: center;
+    line-height: 1.2rem;
+    font-size: 1rem;
+}
+.creation-steps p{
+    font-size:18px;
+}
+.img-icon{
+    width:50px;
+    height: 50px;
+}
+.section-heading{
+    border-bottom: 3px solid var(--border-color);
+}

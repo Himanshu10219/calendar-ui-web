@@ -1,0 +1,31 @@
+<div class="sticky-top">
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <img src="{{profileUrl}}" alt="profile" class="mt-3 rounded-circle" style="width: 100px; height: 100px" />
+  <p class="my-2 p-2">Hello, {{ userName }}</p>
+</div>
+
+<div class="nav-item my-4">
+  <ul class="my-2 py-2 text-white">
+    <li class="my-2 py-2" [class.selected]="selectedItem === 'calendar'" (click)="selectItem('calendar')">
+      <i class="fa fa-calendar mx-3"></i>Events
+    </li>
+    <li class="my-2 py-2 " [class.selected]="selectedItem === 'Category'" (click)="selectItem('Category')">
+      <i class="fa fa-tag mx-3"></i> Category
+    </li>
+    <li class="my-2 py-2 " [class.selected]="selectedItem === 'Group'" (click)="selectItem('Group')">
+      <i class="fa fa-users mx-3"></i>Group
+    </li>
+    <li class="my-2 py-2 " [class.selected]="selectedItem === 'Profile'" (click)="selectItem('Profile')">
+      <i class="fa fa-id-badge mx-3"></i>Account
+    </li>
+    <li class="my-2 py-2 " [class.selected]="selectedItem === 'Logout'" (click)="selectItem('Logout')">
+      <i class="fa fa-sign-out mx-3"></i>Logout
+    </li>
+  </ul>
+</div>
+
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <img src="https://bbdsoftware.com/wp-content/uploads/logo.svg" alt="logo" class="mt-3" style="width: 120px; height: 100px" />
+</div>
+
+</div>

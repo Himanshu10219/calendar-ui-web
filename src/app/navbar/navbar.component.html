@@ -1,0 +1,82 @@
+<nav
+  class="navbar sticky-top navbar-expand-lg navbar-default navbar-light bg-light"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/logo.png" alt="" class="logo" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="nav-buttons ms-auto">
+        <ng-container *ngIf="isUserExist; else elseTemplate">
+          <button class="btn btn-primary" (click)="navigateTo('login')">
+            Login
+          </button>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="dropdown-center">
+            <a href="#" class="btn btn-outline-primary p-2 mx-2">
+              <i class="fa fa-plus mx-2"></i> New Meeting</a
+            >
+            <div class="mobile-navbar d-block d-sm-none">
+              <a href="#" class="loginLink mx-2">Hello, {{ userName }}</a>
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa fa-user profile" aria-hidden="true"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <button
+                    type="button"
+                    class="btn btn-info dropdown-item"
+                    (click)="navigateTo('profile')"
+                  >
+                    Profile
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-info dropdown-item">
+                    Event
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-info dropdown-item">
+                    Category
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="btn btn-info dropdown-item">
+                    Group
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    class="btn btn-info dropdown-item"
+                    (click)="logout()"
+                  >
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

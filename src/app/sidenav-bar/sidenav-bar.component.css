@@ -1,0 +1,39 @@
+.selected {
+	background-color: white;
+	color: black;
+	border-top-left-radius: 20px;
+}
+
+.selected i,
+li {
+	color: black;
+	font-weight: bold;
+}
+
+li,
+a,
+i,
+p {
+	color: white;
+}
+
+.list-group-item {
+	background-color: #043a4d;
+	color: grey;
+}
+
+.nav-item ul li {
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 3rem;
+	transition: all 0.5s linear;
+}
+
+.nav-item ul li:hover {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.nav-item li .fa {
+	font-size: 1.4rem;
+}
